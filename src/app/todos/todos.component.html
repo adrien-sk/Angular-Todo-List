@@ -1,0 +1,31 @@
+<section class="header">
+    <h1>To do list</h1>
+</section>
+<section class="content-container">
+    <div class="content-inner">
+        <div class="form-container">
+            <form>
+                <input type="text" placeholder="Enter your Todo title here" />
+                <input type="submit" value="Add" />
+            </form>
+        </div>
+        <div class="todos-container">
+            <div
+                class="todo-item"
+                [class.completed]="todo.completed"
+                *ngFor="let todo of todos"
+            >
+                <div class="todo-status-container">
+                    <div class="todo-status-icon">X</div>
+                </div>
+                <div class="todo-description">
+                    <p>{{ todo.description }}</p>
+                </div>
+                <div class="actions-container">
+                    <p>Edit</p>
+                    <p>Delete</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
