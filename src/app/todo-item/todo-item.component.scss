@@ -1,0 +1,46 @@
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 5px 0;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    &.completed .todo-status-column .todo-status-wrapper {
+        background: #69f0ae;
+        .todo-status-icon {
+            opacity: 1;
+        }
+    }
+
+    .todo-status-column {
+        padding: 10px;
+
+        .todo-status-wrapper {
+            border: 2px solid #69f0ae;
+            border-radius: 100%;
+            width: 25px;
+            height: 25px;
+
+            .todo-status-icon {
+                opacity: 0;
+                color: rgba(0, 0, 0, 0.87);
+            }
+        }
+    }
+
+    .todo-description {
+        padding: 10px;
+        flex-grow: 1;
+
+        form .field-group {
+            width: 100%;
+        }
+    }
+
+    .actions-container {
+        padding: 10px;
+    }
+}

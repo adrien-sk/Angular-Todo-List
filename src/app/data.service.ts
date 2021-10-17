@@ -8,6 +8,7 @@ export class DataService {
     todos: Todo[] = [
         new Todo('Lorem ipsum 1 test'),
         new Todo('Second lipsum testing true', true),
+        new Todo('Third one ...'),
     ];
 
     constructor() {}

@@ -2,30 +2,43 @@
     <h1>To do list</h1>
 </section>
 <section class="content-container">
-    <div class="content-inner">
+    <mat-card class="content-inner">
         <div class="form-container">
-            <form>
-                <input type="text" placeholder="Enter your Todo title here" />
-                <input type="submit" value="Add" />
+            <form #form="ngForm" (ngSubmit)="OnFormSubmit(form)">
+                <mat-form-field class="field-group" appearance="fill">
+                    <mat-label>To-do title</mat-label>
+                    <input
+                        ngModel
+                        #todoTitleField="ngModel"
+                        matInput
+                        type="text"
+                        placeholder="Enter your To-do title here"
+                        name="title"
+                        required
+                        minlength="2"
+                    />
+                </mat-form-field>
+                <button type="submit" mat-flat-button color="accent">
+                    Add
+                </button>
             </form>
-        </div>
-        <div class="todos-container">
-            <div
-                class="todo-item"
-                [class.completed]="todo.completed"
-                *ngFor="let todo of todos"
-            >
-                <div class="todo-status-container">
-                    <div class="todo-status-icon">X</div>
-                </div>
-                <div class="todo-description">
-                    <p>{{ todo.description }}</p>
-                </div>
-                <div class="actions-container">
-                    <p>Edit</p>
-                    <p>Delete</p>
-                </div>
+            <div *ngIf="todoTitleField.invalid && showValidationErrors">
+                <p *ngIf="todoTitleField.errors!.required">
+                    This field can't be empty
+                </p>
+                <p *ngIf="todoTitleField.errors!.minlength">
+                    This field must contains at least 2 characters
+                </p>
             </div>
         </div>
-    </div>
+        <div class="todos-container">
+            <app-todo-item
+                *ngFor="let todo of todos"
+                [todo]="todo"
+                (todoClicked)="ToggleCompleted(todo)"
+                (editSubmitted)="EditTodo(todo, $event)"
+                (deleteClicked)="DeleteTodo(todo)"
+            ></app-todo-item>
+        </div>
+    </mat-card>
 </section>

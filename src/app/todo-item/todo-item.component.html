@@ -1,0 +1,46 @@
+<mat-card
+    class="todo-item"
+    [class.completed]="todo.completed"
+    (click)="OnTodoClicked()"
+>
+    <div class="todo-status-column">
+        <div class="todo-status-wrapper">
+            <mat-icon
+                class="todo-status-icon"
+                aria-hidden="false"
+                aria-label="Example home icon"
+                >check</mat-icon
+            >
+        </div>
+    </div>
+    <div class="todo-description">
+        <p *ngIf="!editing">{{ todo.description }}</p>
+        <form #form="ngForm" *ngIf="editing" (ngSubmit)="OnFormSubmit(form)">
+            <mat-form-field class="field-group" appearance="fill">
+                <input
+                    [(ngModel)]="todo.description"
+                    #todoTitleField="ngModel"
+                    (click)="$event.stopPropagation()"
+                    matInput
+                    type="text"
+                    placeholder="{{ todo.description }}"
+                    name="title"
+                    required
+                    minlength="2"
+                />
+            </mat-form-field>
+            <div *ngIf="todoTitleField.invalid && showValidationErrors">
+                <p *ngIf="todoTitleField.errors!.required">
+                    This field can't be empty
+                </p>
+                <p *ngIf="todoTitleField.errors!.minlength">
+                    This field must contains at least 2 characters
+                </p>
+            </div>
+        </form>
+    </div>
+    <div class="actions-container" (click)="$event.stopPropagation()">
+        <p (click)="OnEditClicked()">Edit</p>
+        <p (click)="OnDeleteClicked()">Delete</p>
+    </div>
+</mat-card>
