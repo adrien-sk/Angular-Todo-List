@@ -1,28 +1,40 @@
 .todo-item {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 5px 0;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s;
 
-    &:last-of-type {
-        margin-bottom: 0;
+    &:hover {
+        background: #393939;
+
+        .todo-status-column .todo-status-wrapper {
+            background: #69f0af55;
+
+            .todo-status-icon {
+                opacity: 0.4;
+            }
+        }
     }
 
     &.completed .todo-status-column .todo-status-wrapper {
         background: #69f0ae;
+
         .todo-status-icon {
             opacity: 1;
         }
     }
 
     .todo-status-column {
-        padding: 10px;
+        padding-right: 10px;
+        display: flex;
+        align-items: center;
 
         .todo-status-wrapper {
             border: 2px solid #69f0ae;
             border-radius: 100%;
             width: 25px;
             height: 25px;
+            transition: all 0.2s;
 
             .todo-status-icon {
                 opacity: 0;
@@ -32,15 +44,28 @@
     }
 
     .todo-description {
-        padding: 10px;
+        padding: 0 10px;
+        display: flex;
         flex-grow: 1;
+        align-items: center;
 
-        form .field-group {
+        p {
+            margin-bottom: 0;
+        }
+
+        form,
+        .field-group {
             width: 100%;
         }
     }
 
     .actions-container {
-        padding: 10px;
+        padding-left: 10px;
+
+        button {
+            min-width: 45px;
+            padding: 0 6px;
+            margin: 0 3px;
+        }
     }
 }

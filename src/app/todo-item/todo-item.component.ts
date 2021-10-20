@@ -34,6 +34,11 @@ export class TodoItemComponent implements OnInit {
 
     OnEditClicked() {
         this.editing = true;
+        //TODO Focus on input
+    }
+
+    OnSaveClicked() {
+        //TODO Submit form
     }
 
     OnDeleteClicked() {

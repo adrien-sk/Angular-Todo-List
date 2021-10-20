@@ -33,6 +33,7 @@
         </div>
         <div class="todos-container">
             <app-todo-item
+                class="todo-item-container"
                 *ngFor="let todo of todos"
                 [todo]="todo"
                 (todoClicked)="ToggleCompleted(todo)"

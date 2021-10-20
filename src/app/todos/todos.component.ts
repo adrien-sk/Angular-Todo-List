@@ -32,18 +32,13 @@ export class TodosComponent implements OnInit {
     }
 
     EditTodo(todo: Todo, title: void) {
-        console.log(title);
         this.dataService.EditTodo(
             this.todos.indexOf(todo),
             new Todo(String(title), todo.completed)
         );
-        console.log(this.dataService.GetAllTodos());
-        console.log(this.todos);
     }
 
     DeleteTodo(todo: Todo) {
         this.dataService.DeleteTodo(this.todos.indexOf(todo));
-        console.log(this.dataService.GetAllTodos());
-        console.log(this.todos);
     }
 }
